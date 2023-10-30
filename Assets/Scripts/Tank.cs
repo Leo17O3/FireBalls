@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Tank : MonoBehaviour
@@ -20,7 +21,13 @@ public class Tank : MonoBehaviour
         {
             _timeAfterShoot = 0f;
             SpawnBullet();
+            Move();
         }
+    }
+
+    private void Move()
+    {
+        transform.DOMoveX(transform.position.x + 0.5f, _shootDelay / 2f).SetLoops(2, LoopType.Yoyo);
     }
 
     private void SpawnBullet()

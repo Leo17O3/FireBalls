@@ -6,8 +6,11 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerBuilder _towerBuilder;
+    [SerializeField] private WritePlatformsCount _writePlayformsCount;
+    [SerializeField] private EffectInstantaitor _effectInstantaitor;
     [SerializeField] private float _downgradeSpeed;
     private List<Block> _blocks;
+    public int BlocksCount => _blocks.Count - 1;
 
     private void Start()
     {
@@ -15,11 +18,13 @@ public class Tower : MonoBehaviour
 
         foreach (Block block in _blocks)
         {
-            block.BulletCollision += OnBulletCollised;
+            block.BulletCollisied += _writePlayformsCount.OnBulletCollised;
+            block.BulletCollisied += _effectInstantaitor.OnBulletCollised;
+            block.BulletCollisied += OnBulletCollised;
         }
     }
 
-    private void OnBulletCollised(Block block)
+    private void OnBulletCollised(Block block, int blocksCount)
     {
         _blocks.Remove(block);
         DowngradeBlocksPosition();
