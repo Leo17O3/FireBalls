@@ -5,8 +5,18 @@ public class WritePlatformsCount : MonoBehaviour
 {
     [SerializeField] private Text _infoText;
 
-    public void OnBulletCollised(Block block, int blockCount)
+    private void Start()
     {
-        _infoText.text = "Осталось блоков: " + blockCount;
+        Write(Progress.Instance.BlocksCount);
+    }
+
+    public void OnBulletCollised(Block block, int blocksCount)
+    {
+        Write(blocksCount);
+    }
+
+    private void Write(int blocksCount)
+    {
+        _infoText.text = "Осталось блоков: " + blocksCount;
     }
 }

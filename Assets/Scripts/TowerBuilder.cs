@@ -5,13 +5,12 @@ public class TowerBuilder : MonoBehaviour
 {
     private Vector3 _spawnPoint;
     [SerializeField] private Block _block;
-    [SerializeField] private int _blockCount;
 
     public List<Block> Build()
     {
         List<Block> blocks = new List<Block>();
 
-        for (int i = 0; i < _blockCount; i++)
+        for (int i = 0; i < Progress.Instance.BlocksCount; i++)
         {
             Block block = BuildBlock();
             blocks.Add(block);

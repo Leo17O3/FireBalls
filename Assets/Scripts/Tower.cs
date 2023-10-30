@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerBuilder _towerBuilder;
     [SerializeField] private WritePlatformsCount _writePlayformsCount;
+    [SerializeField] private WinChecker _winChecker;
     [SerializeField] private EffectInstantaitor _effectInstantaitor;
     [SerializeField] private float _downgradeSpeed;
     private List<Block> _blocks;
@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour
         {
             block.BulletCollisied += _writePlayformsCount.OnBulletCollised;
             block.BulletCollisied += _effectInstantaitor.OnBulletCollised;
+            block.BulletCollisied += _winChecker.OnBulletCollised;
             block.BulletCollisied += OnBulletCollised;
         }
     }
