@@ -4,29 +4,29 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _force;
-    [SerializeField] private float _additiveDirectionZ;
+    private Vector3 _moveDirection;
+    [SerializeField] private float _extentageForce;
+    [SerializeField] private float _radius;
     [SerializeField] private float _lifeTimeAfterCollisionWithObstacle;
     private Tower _tower;
 
     private void Start()
     {
+        _moveDirection = -transform.right;
         _tower = FindObjectOfType<Tower>();
     }
     private void Update()
     {
-        transform.Translate(-transform.right * _moveSpeed * Time.deltaTime);
+        transform.Translate(_moveDirection * _moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Obstacle obstacle))
         {
-            Vector3 direction = obstacle.transform.position - transform.position;
-            direction.z *= _additiveDirectionZ;
-
             _rigidbody.isKinematic = false;
-            _rigidbody.AddForce(-direction * _force);
+            _rigidbody.AddExplosionForce(_extentageForce, transform.position + transform.right, _radius);
+            _moveDirection = transform.right + transform.up;
             Destroy(gameObject, _lifeTimeAfterCollisionWithObstacle);
         }
         else if (other.TryGetComponent(out Block block))

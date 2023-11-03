@@ -3,6 +3,7 @@ using UnityEngine;
 public class WinChecker : MonoBehaviour
 {
     private WinPanal _winPanal;
+    [SerializeField] private Tower _tower;
 
     private void Awake()
     {
@@ -10,10 +11,20 @@ public class WinChecker : MonoBehaviour
         _winPanal.SetActive(false);
     }
 
-    public void OnBulletCollised(Block block, int blocksCount)
+    private void OnEnable()
     {
-        CheckWin(blocksCount);
+        _tower.SizeUpdated += CheckWin;
     }
+
+    private void OnDisable()
+    {
+        _tower.SizeUpdated -= CheckWin;
+    }
+
+    //public void OnBulletCollised(Block block, int blocksCount)
+    //{
+    //    CheckWin(blocksCount);
+    //}
 
     private void CheckWin(int blocksCount)
     {

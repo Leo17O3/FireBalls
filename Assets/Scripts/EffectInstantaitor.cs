@@ -12,6 +12,7 @@ public class EffectInstantaitor : MonoBehaviour
 
     private void InstantiateAndDestroyEffect(Block block)
     {
-       Destroy(Instantiate(_destroyEffect, block.transform.position, Quaternion.Euler(-90, 0, 0)), _lifeTime);
+        ParticleSystemRenderer particleSystemRenderer = Instantiate(_destroyEffect, block.transform.position, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystemRenderer>();
+        particleSystemRenderer.material.color = block.GetComponent<MeshRenderer>().material.color;
     }
 }

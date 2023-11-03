@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(TowerBuilder))]
 public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerBuilder _towerBuilder;
-    [SerializeField] private WritePlatformsCount _writePlayformsCount;
-    [SerializeField] private WinChecker _winChecker;
     [SerializeField] private EffectInstantaitor _effectInstantaitor;
     [SerializeField] private float _downgradeSpeed;
     private List<Block> _blocks;
     public int BlocksCount => _blocks.Count - 1;
+    public UnityAction<int> SizeUpdated;
 
     private void Start()
     {
@@ -18,11 +18,11 @@ public class Tower : MonoBehaviour
 
         foreach (Block block in _blocks)
         {
-            block.BulletCollisied += _writePlayformsCount.OnBulletCollised;
             block.BulletCollisied += _effectInstantaitor.OnBulletCollised;
-            block.BulletCollisied += _winChecker.OnBulletCollised;
             block.BulletCollisied += OnBulletCollised;
         }
+
+        SizeUpdated?.Invoke(_blocks.Count);
     }
 
     private void OnBulletCollised(Block block, int blocksCount)
@@ -30,6 +30,7 @@ public class Tower : MonoBehaviour
         _blocks.Remove(block);
         DowngradeBlocksPosition();
         Destroy(block.gameObject);
+        SizeUpdated?.Invoke(_blocks.Count);
     }
 
     private void DowngradeBlocksPosition()

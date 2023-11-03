@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3712ea40a7a5b418e4cec22e10303c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyEffect: {fileID: 6834787968851808573, guid: 0b8a782b755f1f64b98f49306000da89, type: 3}
+  _destroyEffect: {fileID: 47199808481738638, guid: 7c2e9443fd4b1234eac4da8e4a641366, type: 3}
   _lifeTime: 1
 --- !u!4 &458330251
 Transform:
@@ -417,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infoText: {fileID: 1623767962}
+  _tower: {fileID: 1133328704}
 --- !u!4 &477633513
 Transform:
   m_ObjectHideFlags: 0
@@ -461,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b225b6b6f320d419e4ee5142585874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tower: {fileID: 1133328704}
 --- !u!4 &699857967
 Transform:
   m_ObjectHideFlags: 0
@@ -664,8 +666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerBuilder: {fileID: 1133328705}
-  _writePlayformsCount: {fileID: 477633512}
-  _winChecker: {fileID: 699857966}
   _effectInstantaitor: {fileID: 458330250}
   _downgradeSpeed: 1
 --- !u!114 &1133328705
@@ -986,7 +986,7 @@ Transform:
   m_GameObject: {fileID: 1404291931}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 16.8, y: 11, z: 0}
+  m_LocalPosition: {x: 16.8, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

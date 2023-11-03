@@ -121,7 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1011775418869945467}
   _moveSpeed: 15
-  _force: 10
+  _extentageForce: 30
+  _radius: 5
   _additiveDirectionZ: 100
   _lifeTimeAfterCollisionWithObstacle: 3
 --- !u!54 &1011775418869945467
