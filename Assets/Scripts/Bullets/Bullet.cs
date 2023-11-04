@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.TryGetComponent(out Block block))
         {
-            block.BulletCollisied?.Invoke(block, _tower.BlocksCount);
+            block.BulletCollisied?.Invoke(block);
             Destroy(gameObject);
         }
     }

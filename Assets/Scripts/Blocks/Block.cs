@@ -3,5 +3,5 @@ using UnityEngine.Events;
 
 public class Block : MonoBehaviour
 {
-    public UnityAction<Block, int> BulletCollisied;
+    public UnityAction<Block> BulletCollisied;
 }

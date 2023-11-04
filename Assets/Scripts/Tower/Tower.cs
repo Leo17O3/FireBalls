@@ -25,7 +25,7 @@ public class Tower : MonoBehaviour
         SizeUpdated?.Invoke(_blocks.Count);
     }
 
-    private void OnBulletCollised(Block block, int blocksCount)
+    private void OnBulletCollised(Block block)
     {
         _blocks.Remove(block);
         DowngradeBlocksPosition();

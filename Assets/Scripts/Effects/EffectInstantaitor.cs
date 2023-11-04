@@ -5,7 +5,7 @@ public class EffectInstantaitor : MonoBehaviour
     [SerializeField] private GameObject _destroyEffect;
     [SerializeField] private float _lifeTime;
 
-    public void OnBulletCollised(Block block, int blocksCount)
+    public void OnBulletCollised(Block block)
     {
         InstantiateAndDestroyEffect(block);
     }
